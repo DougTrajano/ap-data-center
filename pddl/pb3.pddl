@@ -1,4 +1,4 @@
-(define (problem pb1)
+(define (problem pb2)
     (:domain cluster)
     (:objects
         ; computers
@@ -20,28 +20,28 @@
 
     (:init
         ; routers
-        ( not (router-healthy router1))
-        ( not (router-healthy router2))
-        ( not (router-pair router1 router2))
+        ( router-healthy router1)
+        ( router-healthy router2)
+        ( router-pair router1 router2)
 
         ; tesla
-        ( not (master-healthy tesla))
-        ( not (switch-healthy switch1))
+        ( not (master-healthy tesla)) ; issue
+        ( not (switch-healthy switch1)) ; issue
 
-        ( not (worker-healthy w1))
-        ( not (worker-healthy w2))
-        ( not (worker-healthy w3))
+        ( not (worker-healthy w1)) ; issue
+        ( not (worker-healthy w2)) ; issue
+        ( not (worker-healthy w3)) ; issue
 
-        ( not (ebs-healthy ebs1))
-        ( not (ebs-locked ebs1))
-        ( not (ebs-healthy ebs2))
-        ( not (ebs-locked ebs2))
-        ( not (ebs-healthy ebs3))
-        ( not (ebs-locked ebs3))
-        ( not (ebs-healthy ebs4))
-        ( not (ebs-locked ebs4))
-        ( not (bucket-healthy bucket1))
-        ( not (bucket-locked bucket1))
+        ( not (ebs-healthy ebs1)) ; issue
+        ( not (ebs-locked ebs1)) ; issue
+        ( not (ebs-healthy ebs2)) ; issue
+        ( not (ebs-locked ebs2)) ; issue
+        ( not (ebs-healthy ebs3)) ; issue
+        ( not (ebs-locked ebs3)) ; issue
+        ( not (ebs-healthy ebs4)) ; issue
+        ( not (ebs-locked ebs4)) ; issue
+        ( not (bucket-healthy bucket1)) ; issue
+        ( not (bucket-locked bucket1)) ; issue
 
         ( switch-attach-router switch1 router1)
         ( switch-attach-master switch1 tesla)
@@ -55,23 +55,23 @@
         ( ebs-attached ebs4 w3)
 
         ; newton
-        ( not (master-healthy newton))
-        ( not (switch-healthy switch2))
+        ( master-healthy newton)
+        ( switch-healthy switch2)
 
-        ( not (worker-healthy w4))
-        ( not (worker-healthy w5))
-        ( not (worker-healthy w6))
+        ( worker-healthy w4)
+        ( worker-healthy w5)
+        ( worker-healthy w6)
 
-        ( not (ebs-healthy ebs5))
-        ( not (ebs-locked ebs5))
-        ( not (ebs-healthy ebs6))
-        ( not (ebs-locked ebs6))
-        ( not (ebs-healthy ebs7))
-        ( not (ebs-locked ebs7))
-        ( not (ebs-healthy ebs8))
-        ( not (ebs-locked ebs8))
-        ( not (bucket-healthy bucket2))
-        ( not (bucket-locked bucket2))
+        ( ebs-healthy ebs5)
+        ( ebs-locked ebs5)
+        ( ebs-healthy ebs6)
+        ( ebs-locked ebs6)
+        ( ebs-healthy ebs7)
+        ( ebs-locked ebs7)
+        ( ebs-healthy ebs8)
+        ( ebs-locked ebs8)
+        ( bucket-healthy bucket2)
+        ( bucket-locked bucket2)
 
         ( switch-attach-router switch2 router1)
         ( switch-attach-master switch2 newton)
@@ -85,23 +85,23 @@
         ( ebs-attached ebs8 w6)
 
         ; einstein
-        ( not (master-healthy einstein))
-        ( not (switch-healthy switch3))
+        ( master-healthy einstein)
+        ( switch-healthy switch3)
 
-        ( not (worker-healthy w7))
-        ( not (worker-healthy w8))
-        ( not (worker-healthy w9))
+        ( worker-healthy w7)
+        ( worker-healthy w8)
+        ( worker-healthy w9)
 
-        ( not (ebs-healthy ebs9))
-        ( not (ebs-locked ebs9))
-        ( not (ebs-healthy ebs10))
-        ( not (ebs-locked ebs10))
-        ( not (ebs-healthy ebs11))
-        ( not (ebs-locked ebs11))
-        ( not (ebs-healthy ebs12))
-        ( not (ebs-locked ebs12))
-        ( not (bucket-healthy bucket3))
-        ( not (bucket-locked bucket3))
+        ( ebs-healthy ebs9)
+        ( ebs-locked ebs9)
+        ( ebs-healthy ebs10)
+        ( ebs-locked ebs10)
+        ( ebs-healthy ebs11)
+        ( ebs-locked ebs11)
+        ( ebs-healthy ebs12)
+        ( ebs-locked ebs12)
+        ( bucket-healthy bucket3)
+        ( bucket-locked bucket3)
 
         ( switch-attach-router switch3 router2)
         ( switch-attach-master switch3 einstein)
@@ -115,23 +115,23 @@
         ( ebs-attached ebs12 w9)
 
         ; hawking
-        ( not (master-healthy hawking))
-        ( not (switch-healthy switch4))
+        ( master-healthy hawking)
+        ( switch-healthy switch4)
 
-        ( not (worker-healthy w10))
-        ( not (worker-healthy w11))
-        ( not (worker-healthy w12))
+        ( worker-healthy w10)
+        ( worker-healthy w11)
+        ( worker-healthy w12)
 
-        ( not (ebs-healthy ebs13))
-        ( not (ebs-locked ebs13))
-        ( not (ebs-healthy ebs14))
-        ( not (ebs-locked ebs14))
-        ( not (ebs-healthy ebs15))
-        ( not (ebs-locked ebs15))
-        ( not (ebs-healthy ebs16))
-        ( not (ebs-locked ebs16))
-        ( not (bucket-healthy bucket4))
-        ( not (bucket-locked bucket4))
+        ( ebs-healthy ebs13)
+        ( ebs-locked ebs13)
+        ( ebs-healthy ebs14)
+        ( ebs-locked ebs14)
+        ( ebs-healthy ebs15)
+        ( ebs-locked ebs15)
+        ( ebs-healthy ebs16)
+        ( ebs-locked ebs16)
+        ( bucket-healthy bucket4)
+        ( bucket-locked bucket4)
 
         ( switch-attach-router switch4 router2)
         ( switch-attach-master switch4 hawking)
@@ -206,12 +206,12 @@
             ( not (worker-high-cpu w5))
             ( not (worker-high-mem w5))
             ( not (worker-high-network w5))
-            
+
             ( worker-healthy w6)
             ( not (worker-high-cpu w6))
             ( not (worker-high-mem w6))
             ( not (worker-high-network w6))
-            
+
             ( ebs-healthy ebs5)
             ( ebs-locked ebs5)
             ( ebs-healthy ebs6)

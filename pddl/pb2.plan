@@ -1,0 +1,14 @@
+;;!domain: cluster
+;;!problem: pb2
+
+0.00100: (worker-turn-on w7 switch3 ebs10)
+0.00200: (bucket-turn-on bucket4)
+0.00300: (worker-turn-off w5 switch2 ebs7)
+0.00400: (worker-turn-on w5 switch2 ebs7)
+0.00500: (master-turn-off hawking switch4 ebs13 bucket4)
+0.00600: (master-turn-on hawking switch4 ebs13 bucket4)
+0.00700: (worker-turn-off w10 switch4 ebs14)
+0.00800: (worker-turn-on w10 switch4 ebs14)
+
+; Makespan: 0.008
+; Metric: 0.008

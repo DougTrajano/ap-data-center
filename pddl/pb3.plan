@@ -1,0 +1,16 @@
+;;!domain: cluster
+;;!problem: pb2
+
+0.00100: (switch-turn-on switch1 router1)
+0.00200: (ebs-turn-on ebs1)
+0.00300: (worker-turn-on w3 switch1 ebs1)
+0.00400: (ebs-turn-on ebs2)
+0.00500: (worker-turn-on w2 switch1 ebs2)
+0.00600: (ebs-turn-on ebs3)
+0.00700: (worker-turn-on w1 switch1 ebs3)
+0.00800: (ebs-turn-on ebs4)
+0.00900: (bucket-turn-on bucket1)
+0.01000: (master-turn-on tesla switch1 ebs4 bucket1)
+
+; Makespan: 0.01
+; Metric: 0.01
