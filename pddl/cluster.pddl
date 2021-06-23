@@ -46,7 +46,6 @@
         (bucket-healthy ?bucket - bucket)
         (bucket-locked ?bucket - bucket)
         (bucket-attached ?bucket - bucket ?master - master)
-
     )
 
     (:action worker-turn-on
