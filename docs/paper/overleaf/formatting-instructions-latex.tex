@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{helvet}
 \usepackage{times}
+\usepackage{url}
 
 \graphicspath{ {./images/} }
 
@@ -36,31 +37,31 @@ Data centers are key components for several companies and the digital transforma
 
 \section{Introduction}
 
-Nowadays, IT operations are crucial for business continuity. Information systems are used by companies in different processes and products, all these services are implemented in data centers. Critical incidents in data centers may impact the usability of these services and it needs to be handled in timely fashion by engineering team to avoid financial losses or affect their end users.
+Nowadays, IT operations are crucial for business continuity. Information systems are used by companies in different processes and products, all these services are implemented in data centers. Critical incidents in data centers may impact the usability of these services and it needs to be handled in timely fashion by the engineering team to avoid financial losses or affect their end-users.
 
-A data center is a building composed by computers systems, storage systems, infrastructure for power supply, telecommunications, environmental controls (e.g., air conditioning, fire suppression), and many others associated components. The complexity of these resources lies in the fact that all these components needs to work together, if one of these components have an issue, it can affects others components. Engineering teams needs to have a good knowledge of these components and their specific characteristics to be able to solve incidents. Knowledge bases for known issues are built in order to help engineers to apply solutions correctly and as soon as possible.
+A data center is a building composed of computer systems, storage systems, infrastructure for power supply, telecommunications, environmental controls (e.g., air conditioning, fire suppression), and many other associated components. The complexity of these resources lies in the fact that all these components need to work together, if one of these components has an issue, it can affect other components. Engineering teams need to have a good knowledge of these components and their specific characteristics to be able to solve incidents. Knowledge bases for known issues are built to help engineers to apply solutions correctly and as soon as possible.
 
-In this work we propose an automated planner that can understand known issues and provide a set of ordered actions to be implemented in the architecture to fix issues or apply workarounds solutions. We use Planning Domain Definition Language (PDDL) to modelling this domain and some problems (known issues). For each problem we can have different goals depends of the criticality of the situation. Nonetheless, our automated planner will provide a plan with the actions that are expected to achieve the goal.
+In this work, we propose an automated planner that can understand known issues and provide a set of ordered actions to be implemented in the architecture to fix issues or apply workarounds solutions. We use Planning Domain Definition Language (PDDL) to model this domain and some problems (known issues). For each problem we can have different goals depends on the criticality of the situation. Nonetheless, our automated planner will provide a plan with the actions that are expected to achieve the goal.
 
-This work is organized as follows. Section \ref{sec:approach} explain our approach in this work. Section \ref{sec:implementation} provides a detailed description of the proposed solution. Section \ref{sec:experiments} explains the experimental process and the results in detail. Section \ref{sec:related-work} discusses related works. Finally, section \ref{sec:conclusions} presents our conclusions and possibilities for future work.
+This work is organized as follows. Section \ref{sec:approach} explains our approach in this work. Section \ref{sec:implementation} provides a detailed description of the proposed solution. Section \ref{sec:experiments} explains the experimental process and the results in detail. Section \ref{sec:related-work} discusses related works. Finally, section \ref{sec:conclusions} presents our conclusions and possibilities for future work.
 
 \section{Approach}\label{sec:approach}
 % What your idea is, and how it works
 % Make sure your explanation will be clear to someone who's not already familiar with what you're doing
 
-AI Planning is a field of Artificial Intelligence which explores the process of using autonomous techniques to solve planning and scheduling problems. A planning problem is one in which we have some initial starting state, which we wish to transform into a desired goal state through the application of a set of actions.
+AI Planning is a field of Artificial Intelligence that explores the process of using autonomous techniques to solve planning and scheduling problems. A planning problem is one in which we have some initial starting state, which we wish to transform into the desired goal state through the application of a set of actions.\cite{WhatisAI61:online}
 
-PDDL (Planning Domain Definition Language) is intended to express the "physics" of a domain, that is, what predicates there are, what actions are possible, what the structure of compound actions is, and what the effects of actions are.\cite{ghallab1998pddl}
+PDDL (Planning Domain Definition Language) is intended to express the "physics" of a domain, that is, what predicates there are, what actions are possible, what the structure of compound actions is, and what the effects of actions are. \cite{ghallab1998pddl}
 
-We use PDDL to modeling our domain and some sample problems (known issues). The domain contains some components like worker computers, master computers, switches, storage devices, etc. interpreted as objects. The relationship between the components and their states are defined as predicate properties (properties which are either true or false). All possible actions that our planner can apply are defined as well in the domain file. Each problem definition contains the instances of our objects, the initial states and the goals for that problem. 
+We use PDDL to modeling our domain and some sample problems (known issues). The domain contains some components like worker computers, master computers, switches, storage devices, etc. interpreted as objects. The relationship between the components and their states is defined as predicate properties (properties that are either true or false). All possible actions that our planner can apply are defined as well in the domain file. Each problem definition contains the instances of our objects, the initial states and the goals for that problem. 
 
 \section{Implementation}\label{sec:implementation}
 % What it does, what language or system it's written in, etc.
 % Use figures or screen dumps if appropriate
 
-The domain and the problems are defined using PDDL. The automated planner and validator used in this project are provided by planning.domains: http://solver.planning.domains/
+The domain and the problems are defined using PDDL. The automated planner and validator used in this project are provided by planning.domains\footnote{\url{http://solver.planning.domains/}}. The source code created of this project are available in GitHub~\footnote{\url{https://github.com/DougTrajano/pucrs-ap-data-center}}.
 
-As explained early, data centers are complex systems with several hardware components, to validate our proposed solution, we focused in modeling the main components and their integration.
+As explained early, data centers are complex systems with several hardware components, to validate our proposed solution, we focused on modeling the main components and their integration.
 
 Our domain is composed of components of three types.
 
@@ -68,7 +69,7 @@ Our domain is composed of components of three types.
 
 The computer resources defined in our domain are worker and master nodes.
 
-Worker computers are used to deploy applications and are controlled by master computers through switches. Some predicates related with this resource are:
+Worker computers are used to deploy applications and are controlled by master computers through switches. Some predicates related to this resource are:
 
 \begin{itemize}
     \item \textbf{worker-healthy}: Indicates if the worker is healthy or not.
@@ -77,7 +78,7 @@ Worker computers are used to deploy applications and are controlled by master co
     \item \textbf{worker-high-network}: Indicates a high usage of network.
 \end{itemize}
 
-Master computers provides management tools for an entire cluster. All worker nodes attached in a switch will use these tools. 
+Master computers provide management tools for an entire cluster. All worker nodes attached in a switch will use these tools. 
 
 \begin{itemize}
     \item \textbf{master-healthy}: Indicates if the master is healthy or not.
@@ -85,7 +86,7 @@ Master computers provides management tools for an entire cluster. All worker nod
 
 \subsection{Network components}\label{sec:implementation2}
 
-Routers and switches are networks devices used in our implementation. All others components are connected by switches and exposes for the external world using the routers.
+Routers and switches are networks devices used in our implementation. All others components are connected by switches and expose to the external world using the routers.
 
 Routers expose clusters to the outside world, they work in pairs.
 
@@ -107,7 +108,7 @@ Switches connect all components of the cluster and is attached in a router.
 
 We have two types of storage devices.
 
-EBS is a block storage used by computers for their operating systems. Each EBS can be used by only one computer.
+EBS is a block store used by computers for their operating systems. Each EBS can be used by only one computer.
 
 \begin{itemize}
     \item \textbf{ebs-healthy}: Indicates if the EBS is healthy or not.
@@ -115,7 +116,7 @@ EBS is a block storage used by computers for their operating systems. Each EBS c
     \item \textbf{ebs-attached}: Establish a connection between an EBS and a computer.
 \end{itemize}
 
-Bucket is a object storage attached in a master computer and shared with applications deployed in that cluster.
+The Bucket represents object storage attached to a master computer and shared with applications deployed in that cluster.
 
 \begin{itemize}
     \item \textbf{bucket-healthy}: Indicates if the bucket is healthy or not.
@@ -123,7 +124,7 @@ Bucket is a object storage attached in a master computer and shared with applica
     \item \textbf{bucket-attached}: Establish a connection between a bucket and a master computer.
 \end{itemize}
 
-The diagram below demonstrates how these components works together in a healthy scenario.
+The diagram below demonstrates how these components work together in a healthy scenario.
 
 Each cluster receives the name of a famous scientist as a tribute. This has no practical effect on our architecture.
 
@@ -140,15 +141,15 @@ Each cluster receives the name of a famous scientist as a tribute. This has no p
 % Experimental results – Use tables or graphs (preferably graphs)
 % What the results mean 
 
-We want to validate that PDDL has flexibility to modeling different architectures of data centers, with more or less components, and different known issues that our engineers can define and maintain it using a common language. So, engineering teams can act more quickly on incidents using the planner as guide or allowing that the planner can apply the actions directly in the architecture.
+We want to validate that PDDL has the flexibility to modeling different architectures of data centers, with more or fewer components, and different known issues that our engineers can define and maintain it using a common language. So, engineering teams can act more quickly on incidents using the planner as a guide or allowing that the planner can apply the actions directly in the architecture.
 
-Three different scenarios are explored in this work. As PDDL uses the domain and problem as definition, we will reference these scenarios as problems.
+Three different scenarios are explored in this work. As PDDL uses the domain and problem as definitions, we will reference these scenarios as problems.
 
 The goal of our three problems are the same, all components healthy and connected properly and no error message.
 
 \subsection{Problem 1}\label{sec:experiments1}
 
-The first problem explore an initial state of our data center. All components are turned off and needs to be turned on in a specific order. Firstly, routers and switches needs to be turned on, their are responsible to communicate with others objects. Worker and master nodes requires that storage devices are turned on previously.
+The first problem explore the initial state of our data center. All components are turned off and need to be turned on in a specific order. Firstly, routers and switches need to be turned on, they are responsible to communicate with others objects. Worker and master nodes require that storage devices are turned on previously.
 
 \begin{figure}[ht]
     \centering
@@ -157,7 +158,7 @@ The first problem explore an initial state of our data center. All components ar
     \label{fig:data-center-pb1}
 \end{figure}
 
-The plan for this problem is shown below. Note that the solver respect the dependencies between the components, starting routers and switches firstly and the storage and computers in the sequence.
+The plan for this problem is shown below. Note that the solver respects the dependencies between the components, starting routers and switches firstly and the storage and computers in the sequence.
 
 \textbf{router-turn-on} router1 
 
@@ -247,7 +248,7 @@ The plan for this problem is shown below. Note that the solver respect the depen
 
 \subsection{Problem 2}\label{sec:experiments2}
 
-In the second problem, we have some components in three different clusters with errors (memory, cpu and network). When the computer is restarted, its solved this issue.
+In the second problem, we have some components in three different clusters with errors (memory, CPU and network). When the computer is restarted, its solved this issue.
 
 \begin{figure}[ht]
     \centering
@@ -256,7 +257,7 @@ In the second problem, we have some components in three different clusters with 
     \label{fig:data-center-pb2}
 \end{figure}
 
-Actually, some computers that are facing issues are healthy, but with error messages triggered. We defined only actions for turn on and turn off the components, so the solution found by the planner are turn off the problematic computers and turn on again. The plan for this problem is shown below.
+Some computers that are facing issues are healthy, but with error messages triggered. We defined only actions for turn on and turn off the components, so the solution found by the planner is to turn off the problematic computers and turn on them again. The plan for this problem is shown below.
 
 \textbf{worker-turn-on} w7 switch3 ebs10 
 
@@ -276,7 +277,7 @@ Actually, some computers that are facing issues are healthy, but with error mess
 
 \subsection{Problem 3}\label{sec:experiments3}
 
-In the third problem we have a cluster complete offline, all components needs to be turned on.
+In the third problem, we have a cluster complete offline, all components need to be turned on.
 
 \begin{figure}[ht]
     \centering
@@ -285,7 +286,7 @@ In the third problem we have a cluster complete offline, all components needs to
     \label{fig:data-center-pb3}
 \end{figure}
 
-The planner provided a sequence to turn on all the components related to tesla cluster. The plan for this problem is shown below.
+The planner provided a sequence to turn on all the components related to the tesla cluster. The plan for this problem is shown below.
 
 \textbf{switch-turn-on} switch1 router1
 
@@ -315,11 +316,11 @@ The planner provided a sequence to turn on all the components related to tesla c
 
 Few works addressed the usability of artificial intelligence systems in fault tolerance.
 
-In "Predicting Remediations for Hardware Failures in Large-Scale Datacenters" \cite{lin2020predicting} a Gradient Boosted Decision Tree are trained using as input data server failure logs, tooling logs and server attributes for all solved incidents.
+In "Predicting Remediations for Hardware Failures in Large-Scale Datacenters" \cite{lin2020predicting} a Gradient Boosted Decision Tree is trained using as input data server failure logs, tooling logs, and server attributes for all solved incidents.
 
-In "Predicting Computer System Failures Using Support Vector Machines" \cite{10.5555/1855886.1855891} the authors describes the usage Support Vector Machine (SVM) approach to predict failure events based on system log files.
+In "Predicting Computer System Failures Using Support Vector Machines" \cite{10.5555/1855886.1855891} the authors describe the usage Support Vector Machine (SVM) approach to predict failure events based on system log files.
 
-These works are great and help to improve data center management. Our work is distinguished by provide a definition language that engineers can add new known issues very quickly to the system. Also, the explainability of the automated planner is a great benefit as it can be easily interpreted.
+These works are great and help to improve data center management. Our work is distinguished by providing a definition language that engineers can add new known issues very quickly to the system. Also, the explainability of the automated planner is a great benefit as it can be easily interpreted.
 
 \section{Conclusions}\label{sec:conclusions}
 %Summarize what you accomplished
@@ -332,12 +333,12 @@ These works are great and help to improve data center management. Our work is di
 The idea of using PDDL to formalize domains of data center architectures seems to be promising. Nonetheless, there are still many questions to be answered.
 
 \begin{itemize}
-    \item Is it reasonable to require PDDL skills for engineers? Their can develop and maintain the domain and problem files? 
+    \item Is it reasonable to require PDDL skills for engineers? Can engineers develop and maintain the domain and problem files? 
     \item How the information represented by predicates will be collected for the planner?
     \item Can we allow the planner to act directly on the infrastructure? Should some actions be restricted to engineers?
 \end{itemize}
 
-As the future work, is interesting to explore more complex architectures, with more components, involving applications and more possible situations (problems). Define more appropriate actions for the components will provide better plans avoiding a sequence of turn off and turn on that can be stressful for the system. This work is just a small step towards a new possibility to manage infrastructure of our data centers.
+As the future work, is interesting to explore more complex architectures, with more components, involving applications and more possible situations (problems). Define more appropriate actions for the components will provide better plans avoiding a sequence of the turn off and turn on that can be stressful for the system. This work is just a small step towards a new possibility to manage the infrastructure of our data centers.
 
 \bibliographystyle{aaai}
 \bibliography{references.bib}
