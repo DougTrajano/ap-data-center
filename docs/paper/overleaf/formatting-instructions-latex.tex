@@ -63,13 +63,15 @@ The domain and the problems are defined using PDDL. The automated planner and va
 
 As explained early, data centers are complex systems with several hardware components, to validate our proposed solution, we focused on modeling the main components and their integration.
 
-Our domain is composed of components of three types.
+Our domain is composed of components of three types. Each component has predicates and actions.
 
 \subsection{Computer components}\label{sec:implementation1}
 
 The computer resources defined in our domain are worker and master nodes.
 
-Worker computers are used to deploy applications and are controlled by master computers through switches. Some predicates related to this resource are:
+Worker computers are used to deploy applications and are controlled by master computers through switches.
+
+\textbf{Predicates}
 
 \begin{itemize}
     \item \textbf{worker-healthy}: Indicates if the worker is healthy or not.
@@ -78,10 +80,26 @@ Worker computers are used to deploy applications and are controlled by master co
     \item \textbf{worker-high-network}: Indicates a high usage of network.
 \end{itemize}
 
+\textbf{Actions}
+
+\begin{itemize}
+    \item \textbf{worker-turn-on}: Turn on the worker node.
+    \item \textbf{worker-turn-off}: Turn off the worker node.
+\end{itemize}
+
 Master computers provide management tools for an entire cluster. All worker nodes attached in a switch will use these tools. 
+
+\textbf{Predicates}
 
 \begin{itemize}
     \item \textbf{master-healthy}: Indicates if the master is healthy or not.
+\end{itemize}
+
+\textbf{Actions}
+
+\begin{itemize}
+    \item \textbf{master-turn-on}: Turn on the master node.
+    \item \textbf{master-turn-off}: Turn off the master node.
 \end{itemize}
 
 \subsection{Network components}\label{sec:implementation2}
@@ -90,12 +108,25 @@ Routers and switches are networks devices used in our implementation. All others
 
 Routers expose clusters to the outside world, they work in pairs.
 
+\textbf{Predicates}
+
 \begin{itemize}
     \item \textbf{router-healthy}: Indicates if the router is healthy or not.
     \item \textbf{router-pair}: Defines an integration between two routers.
 \end{itemize}
 
+\textbf{Actions}
+
+\begin{itemize}
+    \item \textbf{router-turn-on}: Turn on the router.
+    \item \textbf{router-turn-off}: Turn off the router.
+    \item \textbf{router-mesh-on}: Define a mesh with two routers.
+    \item \textbf{router-mesh-off}: Unmesh the routers.
+\end{itemize}
+
 Switches connect all components of the cluster and is attached in a router.
+
+\textbf{Predicates}
 
 \begin{itemize}
     \item \textbf{switch-healthy}: Indicates if the switch is healthy or not.
@@ -104,11 +135,20 @@ Switches connect all components of the cluster and is attached in a router.
     \item \textbf{switch-attach-worker}: Establish a connection between a switch and a worker computer.
 \end{itemize}
 
+\textbf{Actions}
+
+\begin{itemize}
+    \item \textbf{switch-turn-on}: Turn on the switch.
+    \item \textbf{switch-turn-off}: Turn off the switch.
+\end{itemize}
+
 \subsection{Storage components}\label{sec:implementation3}
 
 We have two types of storage devices.
 
 EBS is a block store used by computers for their operating systems. Each EBS can be used by only one computer.
+
+\textbf{Predicates}
 
 \begin{itemize}
     \item \textbf{ebs-healthy}: Indicates if the EBS is healthy or not.
@@ -116,12 +156,28 @@ EBS is a block store used by computers for their operating systems. Each EBS can
     \item \textbf{ebs-attached}: Establish a connection between an EBS and a computer.
 \end{itemize}
 
+\textbf{Actions}
+
+\begin{itemize}
+    \item \textbf{ebs-turn-on}: Turn on the EBS.
+    \item \textbf{ebs-turn-off}: Turn off the EBS.
+\end{itemize}
+
 The Bucket represents object storage attached to a master computer and shared with applications deployed in that cluster.
+
+\textbf{Predicates}
 
 \begin{itemize}
     \item \textbf{bucket-healthy}: Indicates if the bucket is healthy or not.
     \item \textbf{bucket-locked}: Indicates if the bucket is locked or not.
     \item \textbf{bucket-attached}: Establish a connection between a bucket and a master computer.
+\end{itemize}
+
+\textbf{Actions}
+
+\begin{itemize}
+    \item \textbf{bucket-turn-on}: Turn on the bucket.
+    \item \textbf{bucket-turn-off}: Turn off the bucket.
 \end{itemize}
 
 The diagram below demonstrates how these components work together in a healthy scenario.
