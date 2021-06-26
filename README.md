@@ -1,6 +1,6 @@
 # Using automated planning in data centers fault tolerance system
 
-> This project was my course assessment in [Automated Planning](https://github.com/pucrs-automated-planning/term-projects-2021) classroom at 2021/1.
+> This project was my course assessment in the [Automated Planning](https://github.com/pucrs-automated-planning/term-projects-2021) class in 2021/1.
 
 Data centers are key components for several companies and the digital transformation increases the quantity and
 the complexity of these IT assets.
