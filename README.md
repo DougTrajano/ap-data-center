@@ -1,4 +1,4 @@
-# Using automated planning in data centers fault tolerance system
+# Using automated planning in data centers fault tolerance systems
 
 > This project was my course assessment in the [Automated Planning](https://github.com/pucrs-automated-planning/term-projects-2021) class in 2021/1.
 
